@@ -5,21 +5,21 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class MovesWithMouse : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Movable type;
+    public Movable typeOfMovable;
     
     private RectTransform _rectTransform;
-    private Vector3 _position;
-    private bool _gotcha;
+    private Vector3 _idlePosition;
+    private bool _underPlayerControl;
     
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
-        _position = _rectTransform.localPosition;
+        _idlePosition = _rectTransform.localPosition;
     }
 
     private void Update()
     {
-        if (_gotcha)
+        if (_underPlayerControl)
         {
             transform.position = Input.mousePosition;
         }
@@ -27,14 +27,14 @@ public class MovesWithMouse : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _gotcha = true;
+        _underPlayerControl = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        BlockManager.FinishOperation(type);
-        _gotcha = false;
-        _rectTransform.localPosition = _position;
+        BlockManager.FinishOperation(typeOfMovable);
+        _underPlayerControl = false;
+        _rectTransform.localPosition = _idlePosition;
     }
     
     public enum Movable { Ground, Wheat, Sickle }

@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72dff45db0751af45a5616a04010de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  typeOfMovable: 0
 --- !u!1001 &238641264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72dff45db0751af45a5616a04010de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  typeOfMovable: 1
 --- !u!50 &1326740842
 Rigidbody2D:
   serializedVersion: 4
@@ -2299,7 +2299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72dff45db0751af45a5616a04010de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  typeOfMovable: 2
 --- !u!1001 &1511547885
 PrefabInstance:
   m_ObjectHideFlags: 0
