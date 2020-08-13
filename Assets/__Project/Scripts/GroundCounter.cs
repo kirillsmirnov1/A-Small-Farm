@@ -1,10 +1,10 @@
 ﻿public class GroundCounter : Counter
 {
-    public int maxNumberOfGround = 16;
+    public int maxNumberOfGroundObjects = 16;
     
     public override void IncrementScore()
     {
         _counter++;
-        _text.text = $"{_counter} / {maxNumberOfGround}";
+        _text.text = $"{_counter} / {maxNumberOfGroundObjects}";
     }
 }
