@@ -12,7 +12,7 @@ public class FlyingWheat : MonoBehaviour
     {
         var rectTransform = GetComponent<RectTransform>();
         Vector2 startPosition = rectTransform.anchoredPosition;
-        Vector2 endPosition = GameManager.WheatCounterPosition;
+        Vector2 endPosition = GameManager.WheatCounterRectAnchoredPosition;
         float deltaTime = timeToFly / flySteps;
         float deltaStep = 1f / flySteps;
 
