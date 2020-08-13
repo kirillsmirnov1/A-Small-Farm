@@ -40,9 +40,7 @@ public class WheatOnABlock : MonoBehaviour
 
     public void FlyToTheCounter()
     {
-        // TODO
         transform.localScale = Vector3.zero;
-        // GameManager.IncrementWheatCounter();
         var wheat = Instantiate(flyingWheat, transform.parent.parent.parent);
         wheat.GetComponent<RectTransform>().position = _rectTransform.position;
         wheat.GetComponent<FlyingWheat>().FlyToTheCounter();
