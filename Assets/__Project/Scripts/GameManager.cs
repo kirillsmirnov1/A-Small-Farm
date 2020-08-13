@@ -2,8 +2,10 @@
 
 public class GameManager : MonoBehaviour
 {
-    public Counter groundCounter;
-    public Counter wheatCounter;
+    [SerializeField]
+    private Counter groundCounter;
+    [SerializeField]
+    private Counter wheatCounter;
 
     public static Vector2 WheatCounterRectAnchoredPosition;
     

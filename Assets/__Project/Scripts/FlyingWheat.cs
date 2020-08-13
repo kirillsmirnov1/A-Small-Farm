@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class FlyingWheat : MonoBehaviour
 {
-    public float timeToFly = 1f;
-    public int flySteps = 100;
+    [SerializeField]
+    private float timeToFly = 1f;
+    [SerializeField]
+    private int flySteps = 100;
     
     public void FlyToTheCounter() => StartCoroutine(Fly());
 

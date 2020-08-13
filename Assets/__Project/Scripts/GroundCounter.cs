@@ -1,6 +1,9 @@
-﻿public class GroundCounter : Counter
+﻿using UnityEngine;
+
+public class GroundCounter : Counter
 {
-    public int maxNumberOfGroundObjects = 16;
+    [SerializeField]
+    private int maxNumberOfGroundObjects = 16;
     
     public override void IncrementScore()
     {

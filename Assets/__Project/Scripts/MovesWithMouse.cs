@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class MovesWithMouse : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Movable typeOfMovable;
+    [SerializeField]
+    private Movable typeOfMovable;
     
     private RectTransform _rectTransform;
     private Vector3 _idlePosition;
