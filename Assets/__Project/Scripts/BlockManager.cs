@@ -22,11 +22,12 @@ public class BlockManager : MonoBehaviour
 
     private void ActuallyFinishOperation(MovesWithMouse.Movable movableType)
     {
-        bool anyMouseOver = _blocks.Any(block => block.ObjectOverBlock);
-        Debug.Log($"Operation finished, anyMouseOver: {anyMouseOver}");   
+        // Handle holding mouse over empty space as cancelling the operation 
+        bool objectOverAnyBlock = _blocks.Any(block => block.ObjectOverBlock);
+        // Debug.Log($"Operation finished, anyMouseOver: {objectOverAnyBlock}");   
         foreach (var block in _blocks)
         {
-            block.CompleteOperation(movableType, anyMouseOver);
+            block.CompleteOperation(movableType, objectOverAnyBlock);
         }
     }
 }
