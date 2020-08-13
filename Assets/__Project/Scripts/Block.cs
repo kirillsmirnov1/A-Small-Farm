@@ -5,13 +5,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Collider2D))]
 public class Block : MonoBehaviour
 {
-    public Sprite greenSprite;
-    public Sprite brownSprite;
+    [SerializeField]
+    private Sprite greenSprite;
+    [SerializeField]
+    private Sprite brownSprite;
 
-    public float outlineWidth = 5f;
+    [SerializeField]
+    private float outlineWidth = 5f;
 
-    public BlockStatus Status { get; private set; }
-    public bool ObjectOverBlock;// { get; private set; }
+    private BlockStatus _status;
+    public bool ObjectOverBlock { get; private set; }
     
     private Image _image;
     private Material _material;
@@ -31,27 +34,27 @@ public class Block : MonoBehaviour
     {
         ObjectOverBlock = true;
         
-        switch (Status)
+        switch (_status)
         {
             case BlockStatus.Green:
                 if (other.CompareTag("Ground"))
                 {
                     EnableOutline(true);
-                    Status = BlockStatus.GreenSelected;
+                    _status = BlockStatus.GreenSelected;
                 }
                 break;
             case BlockStatus.Brown: 
                 if (other.CompareTag("Wheat"))
                 {
                     EnableOutline(true);
-                    Status = BlockStatus.BrownSelected;
+                    _status = BlockStatus.BrownSelected;
                 }
                 break;
             case BlockStatus.Grown:
                 if (other.CompareTag("Sickle"))
                 {
                     _wheat.FlyToTheCounter();
-                    Status = BlockStatus.Brown;
+                    _status = BlockStatus.Brown;
                     _image.sprite = brownSprite;
                 }
                 break;
@@ -69,7 +72,7 @@ public class Block : MonoBehaviour
     }
 
 
-    public enum BlockStatus
+    private enum BlockStatus
     {
         Green,
         GreenSelected,
@@ -84,19 +87,19 @@ public class Block : MonoBehaviour
         switch (movableType)
         {
             case MovesWithMouse.Movable.Ground:
-                if (Status == BlockStatus.GreenSelected)
+                if (_status == BlockStatus.GreenSelected)
                 {
-                    Status = success ? BlockStatus.Brown : BlockStatus.Green;
+                    _status = success ? BlockStatus.Brown : BlockStatus.Green;
                     _image.sprite = success ? brownSprite : greenSprite;
                     if(success) GameManager.IncrementGroundCounter();
                     EnableOutline(false);
                 }
                 break;
             case MovesWithMouse.Movable.Wheat:
-                if (Status == BlockStatus.BrownSelected)
+                if (_status == BlockStatus.BrownSelected)
                 {
-                    Status = success ? BlockStatus.Grows : BlockStatus.Brown;
-                    _wheat.StartGrowing(() => Status = BlockStatus.Grown);
+                    _status = success ? BlockStatus.Grows : BlockStatus.Brown;
+                    _wheat.StartGrowing(() => _status = BlockStatus.Grown);
                     EnableOutline(false);
                 } 
                 break;
